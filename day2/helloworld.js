@@ -74,9 +74,10 @@ let person = {
 let emptyObj = {}
 
 // Array Declaration -> ARRAYS ARE NOT TYPED
-let mooses = ["Brown", "Grey", false, {beard: true}, NaN, undefined, null]
-let emptyArr = []
+let mooses = ["Brown", "Grey", false, {beard: true}, NaN, undefined, null];
 
+//                      this is an arrow function
+// mooses.forEach((moose) => console.log(moose))
 
 
 // a sum of two numbers passed in
@@ -85,11 +86,154 @@ function nameOfTheFunction(num1, num2){
     return sum;
 }
 
-console.log(nameOfTheFunction(true, true))
 
 
-// implement this function such that I can pass any number of arguments and receive a sum
+// implement this function such that I can pass any number of arguments and return a sum
 // HINT: look into varargs
-function sum(){
-
+// Spread vs Rest operator
+function sum(...numbers){
+    let sum = 0;
+    numbers.forEach((number) => {
+        sum += number;
+    });
+    return sum;
 }
+
+// console.log(sum(3,1,2,3))
+
+function sumArr(numbers){
+    let sum = 0;
+    numbers.forEach((number) => {
+        sum += number;
+    });
+
+    return sum;
+}
+
+// console.log(sumArr([1,2,3,4,5,6]))
+
+// const sumArrow = (word) => {
+//     console.log(word)
+// }
+
+// sumArrow("JS is Fun eh?")
+
+// JS Callback Functions??? A callback function is simply put a function that is passed to
+// another function in order to delegate the invocation of the function at a later
+
+/*
+    function A -> going to take a function 
+    function B -> going to be given to A
+
+    STACK
+    ----
+    A()
+        B()
+        ...
+        <-
+    <-
+*/
+
+function takesACallback(theCallback, ...arguments){
+    console.log(theCallback(...arguments))
+}
+
+// takesACallback(sum, 1,2,3,4,5,6,7,8,9,10)
+
+// takesACallback(sumArr, [1,2,3,4,5,6,7,8,9,10,11])
+
+// takesACallback(() => {return "Hi"})
+
+function printHello(){
+    console.log("Hello")
+}
+
+
+
+const exercises = ['Lat Pulldowns', 'Dumbell Bicep Curls', 'Benchpress', 'Dips', 'Deadlifts', 'Pullups']
+
+/* array methods
+        forEach()       iterate through each item and do something with 
+        map()           iterate through each item, and convert or MAP the item to something new
+        filter()        iterate through each item, and filter results based on a predicate
+        pop()           removes the last element
+        push()          add an element to the end of the array
+        shift()         remove the first element
+        unshift()       add an element to the front of the array
+*/
+
+// exercises.forEach(
+//     (exercise, i) => {
+//         console.log(exercise)
+//     }
+// )
+
+const workoutPlan = exercises.map((exercise, i) => 
+    {
+        return {
+            id: i + 1,
+            exercise: exercise,
+            split: "Arms/Back"
+        }
+    }
+)
+
+// console.log(workoutPlan.filter(workout => workout.exercise.includes("ll")))
+
+// Descructuring    -> breaking apart an array or object into its individual parts
+// Why ???          -> to work with the parts as individual items/variables
+
+
+// Array Destructuring
+const [,,,,deadlifts] = workoutPlan;
+
+// Object Destructuring
+
+const {exercise: pickles, id} = deadlifts
+
+// console.log(id, exercise)
+
+const person2 = {
+    name: "Barry",
+    age: 32,
+    address: {
+        street: "123 Awesome Ln",
+        city: "Fun Town",
+        state: "Anywhere but Texas",
+        zip: 12345
+    }
+}
+
+const {address: {city: homeTown}} = person2
+
+console.log(homeTown)
+
+
+
+// Hoisting is just the lifting of implementation to satisfy 
+// an invocation that occurs prior to a declaration
+
+
+var b = "Hoisting"
+hoisting()
+
+function hoisting(){
+    console.log(b)
+}
+
+
+
+
+
+// This is a Closure -> a function defined within another function that is only accessible through
+// that function
+outer();
+function outer(){
+    function inner(){
+        console.log("Inner")
+    }
+
+    inner();
+}
+
+
