@@ -206,7 +206,7 @@ const person2 = {
 
 const {address: {city: homeTown}} = person2
 
-console.log(homeTown)
+// console.log(homeTown)
 
 
 
@@ -215,19 +215,16 @@ console.log(homeTown)
 
 
 var b = "Hoisting"
-hoisting()
+// hoisting()
 
 function hoisting(){
     console.log(b)
 }
 
 
-
-
-
 // This is a Closure -> a function defined within another function that is only accessible through
 // that function
-outer();
+// outer();
 function outer(){
     function inner(){
         console.log("Inner")
@@ -237,3 +234,100 @@ function outer(){
 }
 
 
+
+
+// Explore the difference between For-In and For-Of loops
+
+
+// //  i -> 0, 1, 2, 3, 4
+// for (let i in workoutPlan){
+//     console.log(i)
+// }
+
+// //  i -> obj1, obj2, 
+// for (let i of workoutPlan){
+//     console.log(i)
+// }
+
+
+// DOM -> Document Object Model, which is a representation of the entire web page in a JS Object
+
+// DOM Selection Methods -> methods to grab elements from the page
+// document.getElementById()
+// document.getElementsByClassName()
+// document.getElementsByName()
+// document.getElementsByTagName()
+
+const container = document.getElementById("container")
+
+// DOM Manipulation Method
+//          element.innerHtml -> set a string of html
+
+// const heading = document.createElement("h3")
+// heading.textContent = "Here is my heading"
+
+// const story = document.createElement("p");
+// story.innerText = "This is a story..."
+
+const list = document.createElement("ul")
+container.appendChild(list)
+
+
+for(let {id, exercise} of workoutPlan){
+    createWorkoutElement(id, exercise)
+}
+
+function createWorkoutElement(id, exercise){
+    const item = document.createElement("li");
+    item.id = id
+    item.textContent = `${exercise}`;
+
+    const deleteButton = document.createElement("button")
+    deleteButton.textContent = 	'\u2713'
+    deleteButton.style.backgroundColor = "#66FF00"
+
+    //                  eventListener("event", callbackFunction)
+    deleteButton.addEventListener("click", () => completeWorkout(id))
+
+    item.appendChild(deleteButton)
+    list.appendChild(item)
+}
+
+function completeWorkout(id){
+    const compWorkout = document.getElementById(id)
+    compWorkout.removeChild(compWorkout.children[0]);
+    
+    compWorkout.style.textDecoration = "line-through"
+    compWorkout.style.color = "gray"
+}
+
+function newWorkout(){
+    const input = document.getElementById("workout-input");
+    const val = input.value;
+    input.value = null
+    
+    //                      id -> ul.length + 1, exercise --> val
+
+    createWorkoutElement(list.children.length + 1, val)
+    // grabbed the info from the input
+    //      
+}
+
+// Events in javascript
+/*
+        onclick
+        onchange
+        onsubmit
+        onmouseover
+        onmouseout
+        ... SO MANY MORE
+*/
+
+// If we want an event to trigger some other effect, we need to listen for it ()
+//     EventListeners ->    listen for an event trigger, and then resolve a callback
+
+
+
+const userInput = 1;
+fetch(`https://pokeapi.co/api/v2/pokemon/${userInput}`)
+.then(res => res.json()).then(data => console.log(data))
