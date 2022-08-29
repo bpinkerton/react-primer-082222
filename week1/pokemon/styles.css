@@ -1,0 +1,24 @@
+#container{
+    display: flex;
+
+    justify-content: center;
+}
+
+label{
+    color: #FECA1B;
+    margin-right: 7px;
+    font-weight: 600;
+}
+
+body {
+    background-image: url('./images/pokeball-background.jpg');
+}
+
+#submit-button{
+    margin-left: 7px;
+    background-color: #3761A8;
+    color: #FECA1B;
+    font-weight: 600;
+    border-radius: 20px;
+}
+

@@ -1,0 +1,118 @@
+<html> 
+
+	<!-- HEAD is used for metadata and linking scripts and stylesheet-->
+	<head>
+
+		<!-- Internal Stylesheet is simply declared within a style tag -->
+		<style>
+		 	/* CSS Selectors - to select an element and apply some css properties*/
+
+			/* Element Selector */
+			ol {
+				color: fuchsia;
+				background-color: blanchedalmond;
+			}
+
+			/* Id Selector (reserve them for unique elements)*/
+			#grocery-list{
+				color: orange;
+				background-color: blueviolet;
+			}
+
+			/* Class Selector (great for styling groups of non-like elements) */
+
+			.grey-background{
+				background-color: gray;
+			}
+
+			#container{
+				background-color: brown;
+			}
+
+			#container p{
+				background-color: pink;
+			}
+
+			#container p span{
+				background-color: blue;
+			}
+
+			h3 {
+				color: whitesmoke !important
+			}
+		</style>
+
+		<!-- External Stylesheet declared in a separate .css file -->
+		<link rel="stylesheet" href="styles.css" />
+		
+	</head>
+
+	<!-- BODY contains the actual displayed content of the page-->
+	<body style="background-color: bisque">
+		<h1 style="color: blue"> Hello World!! </h1>
+		<h2 style="color: red"> Hello World!! </h2>
+		<h3 style="color: aqua"> Hello World!! </h3>
+		<h4> Hello World!! </h4>
+		<h5> Hello World!! </h5>
+		<h6> Hello World!! </h6>
+
+		<p class="grey-background"> This is a paragraph tag. Any time I want to write
+			a short story or novel, or even just a description of something.
+			I use this guy.
+			
+			<br/> 
+			<br/> 
+			<br/> 
+			This is on a new line.
+			<br>
+			This is also on a new line.
+		 </p>
+
+		<!-- Unordered Lists (Bullets) OR Ordered Lists (Numbered) -->
+
+		<ul style="color: magenta; background-color: cadetblue;">
+			<li style="color: skyblue"><b>Milk</b></li>
+			<li>Bread</li>
+			<li><em>Eggs</em></li>
+		</ul>
+
+		<ol id="grocery-list">
+			<li>Milk</li>
+			<li>Bread</li>
+			<li>Eggs</li>
+		</ol>
+
+		<ol class="grey-background">
+			<li>Milk</li>
+			<li>Bread</li>
+			<li>Eggs</li>
+		</ol>
+		
+		<!-- Anchor tags allow me to replace my URL with... -->
+		<a href="https://www.google.com">ANything YOU WANT</a> <br>
+
+		<a href="crud/about.html">About</a>
+
+		<!--  -->
+
+		<div id="container">
+			<p> <span>Whooo!</span>This is a paragraph tag</p>
+			<ul>
+				<li>Hello</li>
+				<li>World</li>
+			</ul>
+			<a href="https://www.google.com">Go to Google...</a>
+		</div>
+	</body>
+</html>
+
+<!--
+	CSS Specifity - what property is going to apply??
+	Most to Least specific
+
+	1. Inline on that element
+	2. Internal
+	3. External
+	
+	You can override specifity with !imporant
+-->
